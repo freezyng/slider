@@ -1,0 +1,28 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.slider-container{
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    background-color: rgb(207, 231, 233);
+    transition: .2s;
+}
+
+.slider-item{
+    border: 1px solid red;
+    height: 100px;
+    background-color: rgb(38, 177, 196);
+}
+
+.slider-buttons{
+    text-align: center;
+}
