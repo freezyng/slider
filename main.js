@@ -1,15 +1,15 @@
 
-let position = 0;
-const slidesToShow = 6;
-const slidesToScroll = 2;
-const container = document.querySelector('.slider-container');
-const track = document.querySelector('.slider-track');
-const items = document.querySelectorAll('.slider-item');
-const btnPrev = document.querySelector('.btn-prev');
-const btnNext = document.querySelector('.btn-next');
-const itemsCount = items.length;
-const itemWidth = container.clientWidth / slidesToShow;
-const movePosition = slidesToScroll * itemWidth;
+let position         = 0;
+const slidesToShow   = 4;   // отображаемые слайды
+const slidesToScroll = 1;   // сколько прокрутить
+const container      = document.querySelector('.slider-container');
+const track          = document.querySelector('.slider-track');
+const items          = document.querySelectorAll('.slider-item');
+const btnPrev        = document.querySelector('.btn-prev');
+const btnNext        = document.querySelector('.btn-next');
+const itemsCount     = items.length; 
+const itemWidth      = container.clientWidth / slidesToShow;    // вычисляем ширину одного слайда
+const movePosition   = slidesToScroll * itemWidth;
 
 items.forEach((item) => {
     item.style.minWidth = `${itemWidth}px`
@@ -17,15 +17,15 @@ items.forEach((item) => {
 
 
 btnPrev.addEventListener('click', () => {
-    const itemsLeft = Math.abs(position) / itemWidth;
+    const itemsLeft = Math.abs(position) / itemWidth;   // количество слайдов оставшихся слева
     position += itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
 
     setPosition();
     checkBtns();
 })
 btnNext.addEventListener('click', () => {
-    const itemsLeft = itemsCount - (Math.abs(position) +  slidesToShow * itemWidth) / itemWidth;
-    position -= itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+    const itemsRight = itemsCount - (Math.abs(position) +  slidesToShow * itemWidth) / itemWidth;   // количество слайдов оставшихся справа
+    position -= itemsRight >= slidesToScroll ? movePosition : itemsRight * itemWidth;
 
     setPosition();
     checkBtns();
